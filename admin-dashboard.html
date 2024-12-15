@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - نظام إدارة الدورات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-dashboard {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .dashboard-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        
+        .tab-button {
+            padding: 10px 20px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .tab-button.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .dashboard-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .image-preview {
+            max-width: 200px;
+            margin: 10px 0;
+        }
+        
+        .video-preview {
+            max-width: 100%;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .item-card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            position: relative;
+        }
+        
+        .item-card img,
+        .item-card video {
+            max-width: 100%;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .item-card h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+        
+        .item-card p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .video-category {
+            display: inline-block;
+            padding: 4px 8px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+        
+        .video-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            color: #666;
+            margin: 10px 0;
+        }
+        
+        .item-actions {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            gap: 5px;
+        }
+        
+        .action-button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+            font-size: 1em;
+        }
+        
+        .edit-btn {
+            background: #2196F3;
+        }
+        
+        .delete-btn {
+            background: #f44336;
+        }
+        
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            display: none;
+        }
+        
+        .error-message {
+            background: #f44336;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        
+        .no-videos {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+        
+        .progress-bar {
+            position: relative;
+            width: 100%;
+            height: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            width: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 0.9em;
+            line-height: 20px;
+            text-shadow: 0 0 2px rgba(0,0,0,0.5);
+        }
+        
+        .color-picker {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .color-preview {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+        }
+        
+        .btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+        }
+        
+        .requests-filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .search-box input {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+        
+        .requests-list {
+            margin-top: 20px;
+        }
+        
+        .dashboard-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+        
+        .action-button {
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .close-modal {
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        
+        .submit-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .cancel-button {
+            background: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-dashboard">
+        <header class="dashboard-header">
+            <h1>لوحة التحكم</h1>
+            <div class="user-info">
+                <span class="user-name">مرحباً، المدير</span>
+                <button class="logout-button">
+                    <i class="fas fa-sign-out-alt"></i>
+                    تسجيل الخروج
+                </button>
+            </div>
+        </header>
+
+        <nav class="dashboard-tabs">
+            <button class="tab-button active" data-tab="courses-tab">
+                <i class="fas fa-book"></i>
+                إدارة الدورات
+            </button>
+            <button class="tab-button" data-tab="registrations-tab">
+                <i class="fas fa-users"></i>
+                طلبات التسجيل
+            </button>
+            <button class="tab-button" data-tab="settings-tab">
+                <i class="fas fa-cog"></i>
+                الإعدادات
+            </button>
+        </nav>
+
+        <main class="dashboard-content">
+            <!-- قسم إدارة الدورات -->
+            <section id="courses-tab" class="tab-content active">
+                <div class="dashboard-card">
+                    <div class="dashboard-actions">
+                        <button onclick="openAddCourseModal()" class="action-button">
+                            <i class="fas fa-plus"></i>
+                            إضافة دورة جديدة
+                        </button>
+                    </div>
+                    <div id="courses-list" class="items-grid"></div>
+                </div>
+            </section>
+
+            <!-- قسم طلبات التسجيل -->
+            <section id="registrations-tab" class="tab-content">
+                <div class="dashboard-card">
+                    <div class="dashboard-actions">
+                        <select id="status-filter" class="filter-select">
+                            <option value="">جميع الطلبات</option>
+                            <option value="PENDING">قيد المراجعة</option>
+                            <option value="APPROVED">مقبول</option>
+                            <option value="REJECTED">مرفوض</option>
+                        </select>
+                    </div>
+                    <div id="registrations-list" class="requests-list"></div>
+                </div>
+            </section>
+
+            <!-- قسم الإعدادات -->
+            <section id="settings-tab" class="tab-content">
+                <div class="dashboard-card">
+                    <h2>إعدادات النظام</h2>
+                    <form id="settings-form" class="form-grid">
+                        <div class="form-group">
+                            <label for="site-title">عنوان الموقع</label>
+                            <input type="text" id="site-title" name="site-title">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">البريد الإلكتروني للتواصل</label>
+                            <input type="email" id="contact-email" name="contact-email">
+                        </div>
+                        <div class="form-group">
+                            <label for="notification-email">بريد الإشعارات</label>
+                            <input type="email" id="notification-email" name="notification-email">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="submit-button">حفظ الإعدادات</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- نافذة إضافة دورة جديدة -->
+    <div id="add-course-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>إضافة دورة جديدة</h2>
+                <button onclick="closeAddCourseModal()" class="close-button">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="add-course-form" class="form-grid">
+                <div class="form-group">
+                    <label for="course-title">عنوان الدورة</label>
+                    <input type="text" id="course-title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="course-description">وصف الدورة</label>
+                    <textarea id="course-description" name="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="course-price">السعر (ريال)</label>
+                    <input type="number" id="course-price" name="price" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="course-duration">مدة الدورة</label>
+                    <input type="text" id="course-duration" name="duration" required>
+                </div>
+                <div class="form-group">
+                    <label for="course-start-date">تاريخ البدء</label>
+                    <input type="date" id="course-start-date" name="startDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="course-capacity">السعة</label>
+                    <input type="number" id="course-capacity" name="capacity" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="course-image">صورة الدورة</label>
+                    <input type="file" id="course-image" name="image" accept="image/*" required>
+                    <img id="image-preview" style="display: none; max-width: 200px; margin-top: 10px;">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-button">إضافة الدورة</button>
+                    <button type="button" onclick="closeAddCourseModal()" class="cancel-button">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin-dashboard.js"></script>
+</body>
+</html>

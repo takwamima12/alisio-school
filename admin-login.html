@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل دخول المدير - الموقع التعليمي</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-login-page">
+    <div class="admin-login-container">
+        <h2>تسجيل دخول المدير</h2>
+        <form id="adminLoginForm" onsubmit="return validateAdminLogin(event)">
+            <div class="form-group">
+                <label for="adminUsername">اسم المستخدم:</label>
+                <input type="text" id="adminUsername" required>
+            </div>
+            <div class="form-group">
+                <label for="adminPassword">كلمة المرور:</label>
+                <input type="password" id="adminPassword" required>
+            </div>
+            <button type="submit" class="admin-login-btn">دخول</button>
+        </form>
+        <div id="adminError" class="error-message"></div>
+    </div>
+    <script src="admin-auth.js"></script>
+</body>
+</html>

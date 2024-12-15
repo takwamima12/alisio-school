@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - الموقع التعليمي</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <h2>تسجيل الدخول</h2>
+        <form id="loginForm" onsubmit="return validateUserLogin(event)">
+            <div class="form-group">
+                <label for="username">اسم المستخدم:</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">كلمة المرور:</label>
+                <input type="password" id="password" required>
+            </div>
+            <div class="form-group remember-me">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">تذكرني</label>
+            </div>
+            <button type="submit" class="login-btn">دخول</button>
+        </form>
+        <div id="error-message" class="error-message"></div>
+        <div class="register-link">
+            <p>ليس لديك حساب؟ <a href="request.html">تقدم بطلب تسجيل</a></p>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>

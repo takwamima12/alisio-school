@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب الانضمام - الموقع التعليمي</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="request-page">
+    <div class="request-container">
+        <h2>طلب الانضمام للموقع التعليمي</h2>
+        <form id="requestForm" onsubmit="return submitRequest(event)">
+            <div class="form-group">
+                <label for="fullName">الاسم الكامل:</label>
+                <input type="text" id="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">رقم الهاتف:</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">سبب الانضمام:</label>
+                <textarea id="reason" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="request-btn">إرسال الطلب</button>
+        </form>
+        <div id="message" class="message"></div>
+    </div>
+    <script src="request.js"></script>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALISIO SCHOOL - منصة التعليم الرائدة</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Floating Action Button -->
+    <div class="floating-action-btn">
+        <button class="main-btn">
+            <i class="fas fa-plus"></i>
+        </button>
+        <div class="sub-buttons">
+            <button class="sub-btn" title="الدردشة المباشرة">
+                <i class="fas fa-comments"></i>
+            </button>
+            <button class="sub-btn" title="الدعم الفني">
+                <i class="fas fa-headset"></i>
+            </button>
+            <button class="sub-btn" title="العودة للأعلى">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-graduation-cap brand-icon"></i>
+                ALISIO SCHOOL
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">
+                            <i class="fas fa-home"></i>
+                            الرئيسية
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">
+                            <i class="fas fa-book"></i>
+                            الدورات
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">
+                            <i class="fas fa-star"></i>
+                            المميزات
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">
+                            <i class="fas fa-envelope"></i>
+                            اتصل بنا
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-gradient ms-2" href="#" id="loginBtn">
+                            <i class="fas fa-sign-in-alt"></i>
+                            تسجيل الدخول
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 id="heroTitle">مرحباً بكم في ALISIO SCHOOL</h1>
+            <p id="heroSubtitle">ابدأ رحلة التعلم معنا</p>
+            <a href="#courses" id="heroButton" class="btn btn-primary btn-lg">ابدأ الآن</a>
+        </div>
+    </section>
+
+    <section id="features" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">مميزاتنا</h2>
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>تدريب احترافي</h3>
+                        <p>تعلم على يد خبراء ومحترفين في مجالهم</p>
+                        <div class="feature-hover">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>تعلم عن بعد</h3>
+                        <p>ادرس في أي وقت ومن أي مكان</p>
+                        <div class="feature-hover">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>شهادات معتمدة</h3>
+                        <p>احصل على شهادات معترف بها عالمياً</p>
+                        <div class="feature-hover">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="register" class="py-5 registration-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="registration-card" data-aos="fade-up">
+                        <h2 class="text-center mb-4">تقديم طلب التحاق</h2>
+                        <form id="registrationForm" class="registration-form" novalidate>
+                            <!-- البيانات الشخصية -->
+                            <div class="form-section">
+                                <h4 class="section-title">البيانات الشخصية</h4>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="fullName" name="fullName" 
+                                                   pattern="^[\u0600-\u06FF\s]{5,50}$"
+                                                   placeholder="الاسم الكامل" required>
+                                            <label for="fullName">الاسم الكامل (بالعربية)</label>
+                                            <div class="invalid-feedback">
+                                                يرجى إدخال الاسم الكامل باللغة العربية (5-50 حرف)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="nationalId" name="nationalId"
+                                                   pattern="[0-9]{10}"
+                                                   placeholder="رقم الهوية" required>
+                                            <label for="nationalId">رقم الهوية</label>
+                                            <div class="invalid-feedback">
+                                                يرجى إدخال رقم هوية صحيح (10 أرقام)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-floating">
+                                            <input type="date" class="form-control" id="birthDate" name="birthDate"
+                                                   required>
+                                            <label for="birthDate">تاريخ الميلاد</label>
+                                            <div class="invalid-feedback">
+                                                يرجى اختيار تاريخ الميلاد
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="gender" name="gender" required>
+                                                <option value="" disabled selected>اختر الجنس</option>
+                                                <option value="male">ذكر</option>
+                                                <option value="female">أنثى</option>
+                                            </select>
+                                            <label for="gender">الجنس</label>
+                                            <div class="invalid-feedback">
+                                                يرجى اختيار الجنس
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- معلومات الاتصال -->
+                            <div class="form-section mt-4">
+                                <h4 class="section-title">معلومات الاتصال</h4>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                                   placeholder="البريد الإلكتروني" required>
+                                            <label for="email">البريد الإلكتروني</label>
+                                            <div class="invalid-feedback">
+                                                يرجى إدخال بريد إلكتروني صحيح
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-floating">
+                                            <input type="tel" class="form-control" id="phone" name="phone"
+                                                   pattern="[0-9]{10}"
+                                                   placeholder="رقم الجوال" required>
+                                            <label for="phone">رقم الجوال</label>
+                                            <div class="invalid-feedback">
+                                                يرجى إدخال رقم جوال صحيح (10 أرقام)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="address" name="address"
+                                               placeholder="العنوان" required>
+                                        <label for="address">العنوان</label>
+                                        <div class="invalid-feedback">
+                                            يرجى إدخال العنوان
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- معلومات الدورة -->
+                            <div class="form-section mt-4">
+                                <h4 class="section-title">معلومات الدورة</h4>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="course" name="course" required>
+                                                <option value="" disabled selected>اختر الدورة</option>
+                                                <!-- سيتم ملء الخيارات ديناميكياً -->
+                                            </select>
+                                            <label for="course">الدورة المطلوبة</label>
+                                            <div class="invalid-feedback">
+                                                يرجى اختيار الدورة
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="period" name="period" required>
+                                                <option value="" disabled selected>اختر الفترة</option>
+                                                <option value="morning">صباحي</option>
+                                                <option value="evening">مسائي</option>
+                                            </select>
+                                            <label for="period">الفترة المفضلة</label>
+                                            <div class="invalid-feedback">
+                                                يرجى اختيار الفترة المفضلة
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="message" name="message"
+                                                  placeholder="ملاحظات إضافية" style="height: 100px"></textarea>
+                                        <label for="message">ملاحظات إضافية (اختياري)</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- الموافقة والإرسال -->
+                            <div class="form-section mt-4">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
+                                    <label class="form-check-label" for="terms">
+                                        أوافق على <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">الشروط والأحكام</a>
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        يجب الموافقة على الشروط والأحكام
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-gradient btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i>
+                                        إرسال الطلب
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal للشروط والأحكام -->
+    <div class="modal fade" id="termsModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">الشروط والأحكام</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>شروط التسجيل:</h6>
+                    <ul>
+                        <li>يجب أن يكون المتقدم سعودي الجنسية أو مقيم بإقامة سارية المفعول</li>
+                        <li>العمر لا يقل عن 18 سنة</li>
+                        <li>الالتزام بحضور جميع المحاضرات</li>
+                        <li>دفع رسوم التسجيل كاملة قبل بدء الدورة</li>
+                    </ul>
+                    <h6>سياسة الإلغاء:</h6>
+                    <ul>
+                        <li>يمكن إلغاء التسجيل قبل أسبوع من بدء الدورة</li>
+                        <li>يتم استرداد 80% من الرسوم في حالة الإلغاء المبكر</li>
+                        <li>لا يمكن استرداد الرسوم بعد بدء الدورة</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="contact-card text-center" data-aos="zoom-in">
+                        <div class="contact-header">
+                            <i class="fas fa-envelope-open-text fa-3x mb-4"></i>
+                            <h2 class="mb-4">تواصل معنا</h2>
+                        </div>
+                        <div class="contact-info">
+                            <p class="mb-3">
+                                <i class="fas fa-envelope me-2 pulse"></i>
+                                info@alisioschool.com
+                            </p>
+                            <p class="mb-3">
+                                <i class="fas fa-phone me-2 pulse"></i>
+                                +123 456 7890
+                            </p>
+                            <p class="mb-4">
+                                <i class="fas fa-map-marker-alt me-2 pulse"></i>
+                                الموقع الرئيسي
+                            </p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-btn">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-btn">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-btn">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-btn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
